@@ -40,4 +40,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // The country that belong to the user.
+    public function country(){
+        return $this->belongsTo(Country::class,'country_id','id');
+    }
+
+    
+    // The roles that belong to the user.
+    public function roles(){
+        return $this->belongsToMany(Role::class, 'role_users');
+    }
+
+   
 }
