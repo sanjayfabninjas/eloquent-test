@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,12 @@ Route::name('test.get.')->group(function() {
     Route::get('/get-inactive-post-with-comments',[TaskController::class, 'inactivePostsWithComments'])->name('inactive.posts.with.comments');
     Route::get('/get-active-users-only-with-active-roels',[TaskController::class, 'activeUsersOnlyWithACtiveRoles'])->name('active.users.only.with.active.roles');
 
+});
+
+Route::prefix('theme/')->name('theme.')->group( function() {
+
+    Route::get('/home', [HomeController::class, 'home'])->name('home');
+    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::get('/about', [HomeController::class, 'about'])->name('about');
 });
 
